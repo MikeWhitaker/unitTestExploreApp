@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * @ngdoc overview
@@ -9,27 +9,31 @@
  * Main module of the application.
  */
 angular
-  .module('unitTestExploreApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
+  .module("unitTestExploreApp", [
+    "ngAnimate",
+    "ngCookies",
+    "ngResource",
+    "ngRoute",
+    "ngSanitize",
+    "ngTouch"
   ])
-  .config(function ($routeProvider) {
+  .config(function($routeProvider, $locationProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+      .when("/", {
+        templateUrl: "views/main.html",
+        controller: "MainCtrl",
+        controllerAs: "main"
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when("/about", {
+        templateUrl: "views/about.html",
+        controller: "AboutCtrl",
+        controllerAs: "about"
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: "/"
       });
+      $locationProvider.html5Mode(false);
+  })
+  .run(function(loggingService) {
+    loggingService.start();
   });
