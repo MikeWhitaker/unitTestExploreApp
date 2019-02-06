@@ -26,7 +26,7 @@ describe("unitTestExploreApp config tests", function() {
   });
 });
 
-fdescribe('unitTestExploreApp runfunc tests', function () {
+describe('unitTestExploreApp runfunc tests', function () {
     var loggingService;
     beforeEach(function () {
         module('unitTestExploreApp', function ($provide) {

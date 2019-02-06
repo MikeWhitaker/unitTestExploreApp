@@ -12,7 +12,7 @@ angular.module('unitTestExploreApp')
     // AngularJS will instantiate a singleton by calling "new" on this function
     var service = {};
     service.start = function () {
-      console.log('from the service');
+      //console.log('from the service');
     };
 
     return service;
