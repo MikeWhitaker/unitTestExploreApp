@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: AnalyticscontrollerCtrl', function () {
+fdescribe('Controller: AnalyticscontrollerCtrl', function () {
 
   // load the controller's module
   beforeEach(module('unitTestExploreApp'));

@@ -12,22 +12,21 @@ angular
   .controller("AnalyticscontrollerCtrl", function() {
     var vm = this;
 
-    function itterate(interations) {
-      for (let index = 1; index < interations; index++) {
-        counter = index;
+    function iterate(interations) {
+      for (var index = 1; index < interations; index++) {
+        updateAnalyticsValue(index);
       }
-      updateAnalyticsValue(value);
     }
 
-    function updateAnalyticsValue(value) {
+    function updateAnalyticsValue(counter) {
       if (!vm.analyticsValue) {
-        let analyticPrefix = "Btn_Value";
-        vm.analyticsValue = analyticPrefix.concat(value);
+        var analyticPrefix = "Btn_Value";
+        vm.analyticsValue = analyticPrefix.concat(counter);
       }
     }
 
     function run(){
-      itterate(30);
+      iterate(30);
     }
 
     run();
