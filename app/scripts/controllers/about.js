@@ -8,7 +8,7 @@
  * Controller of the unitTestExploreApp
  */
 angular.module('unitTestExploreApp')
-  .controller('AboutCtrl', function () {
+  .controller('AboutCtrl', function ($resource) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

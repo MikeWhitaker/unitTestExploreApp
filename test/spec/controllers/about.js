@@ -23,7 +23,7 @@ describe("Controller: AboutCtrl", function() {
     expect(AboutCtrl.awesomeThings.length).toBe(3);
   });
 
-  fit("should have a $window object", function() {
+  it("should have a $window object", function() {
 
     $window.alert('some text');
     expect($window.alert).toHaveBeenCalled();
