@@ -1,40 +1,48 @@
-'use strict';
+"use strict";
 
-describe('Search controller ->', function () {
-  var $scope = {};
-  var $location = {};
+fdescribe("Search controller ->", function() {
+  var $scope;
+  var $location;
+  var $controller;
 
-  beforeEach(function () {
-    $location.url = "";
-    $scope.search = function (query) {
-      $location.url = '';
-      if (query !== ''){
-        $location.url = '/results?q=star%20wars';
-      }
-      return query;
+  beforeEach(inject(function(_$controller_, _$location_) {
+    $scope = {};
+    $controller = _$controller_;
+    $location = _$location_;
+
+    var ctrlCtor = function($scope) {
+      
+      $scope.search = function() {
+        if ($scope.query) {
+          $location.path('/results').search('q', $scope.query);
+        }
+      };
     };
-    
-  });
 
-  it('should redirect to the query results page for non-empty query', function () {
+    var ctrlLocals = {
+      $scope: $scope,
+      $location: $location
+    };
+
+    $controller(ctrlCtor, ctrlLocals);
+  }));
+
+   it("should redirect to the query results page for non-empty query", function() {
     // Arrange
-    $scope.query = 'star wars';
-    // Act 
+    $scope.query = "star wars";
+    // Act
     $scope.search();
 
     // Assert
-    expect($location.url).toBe('/results?q=star%20wars');
+    expect($location.url()).toBe("/results?q=star%20wars");
   });
 
-  it('should not do anything if the query is empty', function () {
-    $scope.query = '';
-    // Act 
-    $scope.search($scope.query);
+  it("should not do anything if the query is empty", function() {
+    $scope.query = "";
+    // Act
+    $scope.search();
 
     // Assert
-    expect($location.url).toBe('');
-    
+    expect($location.url()).toBe("");
   });
-
-
 });

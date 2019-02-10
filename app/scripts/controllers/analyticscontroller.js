@@ -19,13 +19,14 @@ angular
     }
 
     function updateAnalyticsValue(counter) {
-      if (!vm.analyticsValue) {
-        var analyticPrefix = "Btn_Value";
-        vm.analyticsValue = analyticPrefix.concat(counter);
-      }
+      if (vm.hasOwnProperty("analyticsValue") && vm.analyticsValue) 
+        return;
+
+      var analyticPrefix = "Btn_Value";
+      vm.analyticsValue = analyticPrefix.concat(counter);
     }
 
-    function run(){
+    function run() {
       iterate(30);
     }
 

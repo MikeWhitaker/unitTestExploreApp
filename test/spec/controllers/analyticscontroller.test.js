@@ -1,6 +1,6 @@
 'use strict';
 
-fdescribe('Controller: AnalyticscontrollerCtrl', function () {
+describe('Controller: AnalyticscontrollerCtrl', function () {
 
   // load the controller's module
   beforeEach(module('unitTestExploreApp'));
@@ -24,5 +24,4 @@ fdescribe('Controller: AnalyticscontrollerCtrl', function () {
   it('should the value of analyticsValue on the controller should be in a certain format', function () {
     expect(AnalyticscontrollerCtrl.analyticsValue).toBe('Btn_Value1');
   });
-
 });
