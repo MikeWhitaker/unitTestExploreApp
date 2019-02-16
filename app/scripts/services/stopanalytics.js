@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * @ngdoc service
@@ -7,12 +7,26 @@
  * # stopAnalytics
  * Service in the unitTestExploreApp.
  */
-angular.module('unitTestExploreApp')
-  .service('stopAnalytics', function (Analytics) {
+angular
+  .module("unitTestExploreApp")
+  .service("stopAnalytics", function(Analytics) {
     var service = {};
-    
-    service.trackEvent = function () {
-      Analytics.trackEvent(arguments[0],[1],[3]);
+
+    var bufferAnalyticCall = [];
+    service.trackEvent = function() {
+      if (_(arguments).some(function(argument) {
+          return !argument;
+        }))
+        throw ("invalid argument exception: ", arguments);
+
+      if (!Analytics.trackEvent) {
+        bufferAnalyticCall.push(arguments);
+      } else {
+        bufferAnalyticCall.forEach(function(analyticsCall) {
+          Analytics.trackEvent(analyticsCall);
+        });
+      }
+      Analytics.trackEvent.apply(null, arguments);
     };
 
     return service;
