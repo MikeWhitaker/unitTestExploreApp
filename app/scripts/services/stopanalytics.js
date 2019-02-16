@@ -22,11 +22,13 @@ angular
       if (!Analytics.trackEvent) {
         bufferAnalyticCall.push(arguments);
       } else {
-        bufferAnalyticCall.forEach(function(analyticsCall) {
-          Analytics.trackEvent(analyticsCall);
-        });
+        if(!_(bufferAnalyticCall).isEmpty()){
+          bufferAnalyticCall.forEach(function(analyticsCall) {
+            Analytics.trackEvent(analyticsCall);
+          });
+        }
+        Analytics.trackEvent.apply(null, arguments);
       }
-      Analytics.trackEvent.apply(null, arguments);
     };
 
     return service;

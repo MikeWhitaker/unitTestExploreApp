@@ -26,3 +26,29 @@ describe("Service: stopAnalytics", function() {
     expect(Analytics.trackEvent).toHaveBeenCalledWith("someData", 1, {});
   });
 });
+
+describe("Service: stopAnalytics Analytics not available", function() {
+  var stopAnalytics;
+  var Analytics;
+  // load the service's module
+  beforeEach(function() {
+    module("unitTestExploreApp", function($provide) {
+      $provide.value("Analytics", {
+        
+      });
+    });
+  });
+
+  // instantiate service
+  beforeEach(inject(function(_stopAnalytics_, _Analytics_) {
+    stopAnalytics = _stopAnalytics_;
+    Analytics = _Analytics_;
+  }));
+
+  it("Should call Analytic.trackEvent when stopAnalytics is called", function() {
+    expect( function(){
+      stopAnalytics.trackEvent("someData", 1, {});
+    } )
+    .not.toThrow();
+  });
+});
