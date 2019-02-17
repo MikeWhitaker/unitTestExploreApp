@@ -12,8 +12,8 @@ describe('Service: omdbApi', function () {
   var $httpBackend;
   var $rootScope;
 
-  beforeEach(inject(function(_names_, _$httpBackend_, _$rootScope_) {
-    omdbApi = _names_;
+  beforeEach(inject(function(_omdbApi_, _$httpBackend_, _$rootScope_) {
+    omdbApi = _omdbApi_;
     $httpBackend = _$httpBackend_;
     $rootScope = _$rootScope_;
   }));

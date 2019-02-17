@@ -1,6 +1,6 @@
 'use strict';
 
-fdescribe('Controller: ResultsCtrl ->', function () {
+describe('Controller: ResultsCtrl ->', function () {
   var ResultsCtrl;
   var $controller;
   var scope;
