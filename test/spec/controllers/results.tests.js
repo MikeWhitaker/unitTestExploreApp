@@ -57,4 +57,26 @@ fdescribe('Controller: ResultsCtrl ->', function () {
     scope.$apply();
     expect(scope.results[0].Title).toBe(expectedResult);
   });
+
+  it('should have an property on the scope called errorMessage', function () {
+    // Arrange
+    var expectedErrorMessage = 'Something went wrong.';
+    $location.search('q', 'star wars');
+
+    spyOn(omdbApi, 'search').and.callFake(function () {
+      // interesting piece of code here. We will be resolving the promise with $q resolve.
+      var deferred = $q.defer();
+      deferred.reject();
+      return deferred.promise;
+    });
+
+    ResultsCtrl = $controller('ResultsCtrl', {
+      $scope: scope
+      // place here mocked dependencies
+    });
+
+    scope.$apply();
+    dump(angular.mock.dump(scope.errorMessage));
+    expect(scope.errorMessage).toBe(expectedErrorMessage);
+  });
 });

@@ -22,5 +22,8 @@ angular.module('unitTestExploreApp')
     omdbApi.search(query)
       .then(function(data){
         $scope.results = data.Search;
+      })
+      .catch(function(){
+        $scope.errorMessage = 'Something went wrong.';
       });
   });
