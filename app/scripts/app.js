@@ -8,6 +8,8 @@
  *
  * Main module of the application.
  */
+var bufferAnalyticsCall = [];
+var root = this;
 angular
   .module("unitTestExploreApp", [
     "ngResource",
@@ -16,8 +18,31 @@ angular
     "ngTouch",
     "angular-google-analytics"
   ])
-  .config(["$routeProvider", "$locationProvider", "AnalyticsProvider",
-    function($routeProvider, $locationProvider, AnalyticsProvider) {
+  .config(["$routeProvider", "$locationProvider", "AnalyticsProvider", "$provide",
+    function($routeProvider, $locationProvider, AnalyticsProvider, $provide) {
+      $provide.decorator('Analytics', function ($delegate) {
+        var originalFunction = $delegate.trackEvent;
+        $delegate.trackEvent = function() {
+          if (_(arguments).some(function(argument) {
+              return !argument;
+            }))
+            throw ("invalid argument exception: ", arguments);
+    
+          if (!root.ga) {
+            debugger;
+            bufferAnalyticsCall.push(arguments);
+          } else {
+            if(!_(bufferAnalyticsCall).isEmpty()){
+              bufferAnalyticsCall.forEach(function(analyticsCall) {
+                $delegate.trackEvent(analyticsCall);
+              });
+              bufferAnalyticsCall = [];
+            }
+            originalFunction.apply($delegate, arguments);
+          }
+        };
+        return $delegate;
+      });
 
 
       $routeProvider

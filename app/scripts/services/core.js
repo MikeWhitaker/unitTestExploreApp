@@ -27,6 +27,10 @@ angular.module('unitTestExploreApp')
           method: "GET",
           headers: { authToken: token }
         },
+        search: {
+          method: "GET",
+          headers: { authToken: token }
+        },
         save: {
           method: "POST",
           headers: { authToken: token }

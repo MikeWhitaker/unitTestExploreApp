@@ -58,14 +58,13 @@ describe('Service: core', function () {
     });
 
     popularMovie.$update();
-    //expect($httpBackend.flush).not.toThrow();
+    expect($httpBackend.flush).not.toThrow();
   });
 
   it("should authenticate the headers", function() {
     function expectedHeaders(headers) {
       dump(angular.mock.dump(headers));
       var actualToken = angular.fromJson(headers).authToken;
-
       return actualToken === "teadybear";
     }
     $httpBackend.expectGET("popular/tt001100", expectedHeaders).respond(200);

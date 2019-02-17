@@ -12,7 +12,7 @@ angular
   .service("stopAnalytics", function(Analytics) {
     var service = {};
 
-    var bufferAnalyticCall = [];
+    var bufferAnalyticsCall = [];
     service.trackEvent = function() {
       if (_(arguments).some(function(argument) {
           return !argument;
@@ -20,10 +20,10 @@ angular
         throw ("invalid argument exception: ", arguments);
 
       if (!Analytics.trackEvent) {
-        bufferAnalyticCall.push(arguments);
+        bufferAnalyticsCall.push(arguments);
       } else {
-        if(!_(bufferAnalyticCall).isEmpty()){
-          bufferAnalyticCall.forEach(function(analyticsCall) {
+        if(!_(bufferAnalyticsCall).isEmpty()){
+          bufferAnalyticsCall.forEach(function(analyticsCall) {
             Analytics.trackEvent(analyticsCall);
           });
         }
