@@ -7,25 +7,33 @@ describe("Controller: headerCtrl", function() {
   var headerCtrl;
   var $location;
   var scope;
-  var $scope;
+  var $controller;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function($controller, $rootScope, _$location_) {
-    scope = $rootScope.$new();
+  beforeEach(inject(function(_$controller_, $rootScope, _$location_) {
+    $controller = _$controller_;
     $location = _$location_;
-    headerCtrl = $controller("headerCtrl", {
-      $scope: scope
-      // place here mocked dependencies
-    });
+    scope = $rootScope.$new();
   }));
 
-  fdescribe("isActive ->", function() {
+  beforeEach(function(){
     
-    it('should call $location.path', function() {
+  });
+
+  describe("isActive ->", function() {
+    
+    fit('should call $location.path', function() {
+      var headerCtrl = $controller("headerCtrl", {
+        $scope: scope
+      });
+
       spyOn($location, "path").and.callFake(function() {
         return "aString";
       });
-      headerCtrl.isActive("aString");
+
+      scope.isActive("aString");
+
+      
       expect($location.path).toHaveBeenCalled();
     });
       
