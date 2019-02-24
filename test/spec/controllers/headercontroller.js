@@ -17,15 +17,14 @@ describe("Controller: headerCtrl", function() {
   }));
 
   beforeEach(function(){
-    
+    var headerCtrl = $controller("headerCtrl", {
+      $scope: scope
+    });
   });
 
   describe("isActive ->", function() {
     
-    fit('should call $location.path', function() {
-      var headerCtrl = $controller("headerCtrl", {
-        $scope: scope
-      });
+    it('should call $location.path', function() {
 
       spyOn($location, "path").and.callFake(function() {
         return "aString";
@@ -41,7 +40,7 @@ describe("Controller: headerCtrl", function() {
       spyOn($location, "path").and.callFake(function() {
         return "aString";
       });
-      var expectedResult = headerCtrl.isActive("aString");
+      var expectedResult = scope.isActive("aString");
       expect(expectedResult).toBe(true);
     });
 
@@ -49,7 +48,7 @@ describe("Controller: headerCtrl", function() {
       spyOn($location, "path").and.callFake(function() {
         return "anOtherString";
       });
-      var expectedResult = headerCtrl.isActive("aString");
+      var expectedResult = scope.isActive("aString");
       expect(expectedResult).toBe(false);
     });
   });
