@@ -29,7 +29,6 @@ angular
             throw ("invalid argument exception: ", arguments);
     
           if (!root.ga) {
-            debugger;
             bufferAnalyticsCall.push(arguments);
           } else {
             if(!_(bufferAnalyticsCall).isEmpty()){

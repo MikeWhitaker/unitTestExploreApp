@@ -11,7 +11,6 @@ angular.module('unitTestExploreApp')
   .controller('headerCtrl', function ($scope, $location) {
     var vm = this;
     vm.isActive = function (queriedPath) {
-      debugger;
       return (queriedPath === $location.path());
     };
 

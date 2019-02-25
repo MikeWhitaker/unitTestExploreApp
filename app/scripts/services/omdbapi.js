@@ -11,11 +11,11 @@ angular.module('unitTestExploreApp')
   .service('omdbApi', function ($http, $q) {
     var self = this;
     self.aVariable = 'sometext';
-    var baseUrl = 'http://www.omdbapi.com/?v=1&';
+    var baseUrl = 'http://www.omdbapi.com/?apikey=4293974&';
     var service = {};
     
     function httpPromise (url) {
-			var deferred = $q.defer();
+      var deferred = $q.defer();
       $http.get(url)
         .then(function successCallback(response) {
           deferred.resolve(response);
@@ -26,7 +26,7 @@ angular.module('unitTestExploreApp')
     }
     
     service.search = function(query) { 
-			return httpPromise(baseUrl + 's=' + encodeURIComponent(query));
+      return httpPromise(baseUrl + 's=' + encodeURIComponent(query));
     };
     
     service.find = function(id) {
