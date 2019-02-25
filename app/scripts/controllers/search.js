@@ -3,7 +3,7 @@
 /**
  * @ngdoc function
  * @name unitTestExploreApp.controller:SearchCtrl
- * @description
+ * @description 
  * # SearchCtrl
  * Controller of the unitTestExploreApp
  */

@@ -1,1 +1,10 @@
-<p>This is the search view.</p>
+<h1><MovieApp</h1>
+<p class="lead">Your resource for Movie Data.</p>
+<form class="form-inline-lg" ng-submit="searchCtrl.search()">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="File title ..." ng-model="searchCtrl.query">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="searchCtrl.search()">Go!</button>
+        </span>
+    </div>
+</form>

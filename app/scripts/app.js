@@ -56,10 +56,15 @@ angular
           controller: "AboutCtrl",
           controllerAs: "about"
         })
+        .when("/results", {
+          templateUrl: "views/results.html",
+          controller: "ResultsCtrl",
+          controllerAs: "results"
+        })
         .when("/search", {
           templateUrl: "views/search.html",
           controller: "SearchCtrl",
-          controllerAs: "search"
+          controllerAs: "searchCtrl"
         })
         .otherwise({
           redirectTo: "/"

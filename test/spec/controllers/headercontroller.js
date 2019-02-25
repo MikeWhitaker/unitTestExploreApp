@@ -25,7 +25,7 @@ describe("Controller: headerCtrl", function() {
   describe("isActive ->", function() {
     
     it('should call $location.path', function() {
-
+ 
       spyOn($location, "path").and.callFake(function() {
         return "aString";
       });

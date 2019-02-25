@@ -19,6 +19,7 @@ angular.module('unitTestExploreApp')
       }]
     };
     var query = $location.search().q;
+    debugger;
     omdbApi.search(query)
       .then(function(data){
         $scope.results = data.Search;
