@@ -17,7 +17,8 @@ angular
     "ngSanitize",
     "ngTouch",
     "angular-google-analytics",
-    "ngAnimate"
+    "ngAnimate",
+    "ui.bootstrap"
   ])
   .config(["$routeProvider", "$locationProvider", "AnalyticsProvider", "$provide",
     function($routeProvider, $locationProvider, AnalyticsProvider, $provide) {
