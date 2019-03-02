@@ -1,7 +1,9 @@
-<accordion>
-    <accordion-group ng-repeat="result in results" is-open="result.open">
-        <accordion-heading>
-            {{result.Titlte}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': result.open, 'glyphicon-chevron-right': !result.open}"></i>
-        </accordion-heading>
-    </accordion-group>
-</accordion>
+<uib-accordion>
+    <div uib-accordion-group class="panel-default" is-open="result.open" ng-repeat="result in results">
+        <uib-accordion-heading ng-click="result.open=!result.open">
+        {{result.Title}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': result.open, 'glyphicon-chevron-right': !result.open}"></i>
+        </uib-accordion-heading>
+        This is just some content to illustrate fancy headings.
+    </div>
+</uib-accordion>
+

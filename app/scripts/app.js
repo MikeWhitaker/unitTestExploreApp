@@ -16,7 +16,8 @@ angular
     "ngRoute",
     "ngSanitize",
     "ngTouch",
-    "angular-google-analytics"
+    "angular-google-analytics",
+    "ngAnimate"
   ])
   .config(["$routeProvider", "$locationProvider", "AnalyticsProvider", "$provide",
     function($routeProvider, $locationProvider, AnalyticsProvider, $provide) {
