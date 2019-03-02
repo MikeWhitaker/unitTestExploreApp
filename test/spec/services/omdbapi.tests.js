@@ -36,7 +36,7 @@ describe('Service: omdbApi', function () {
   it("should return the data form the http backend", function() {
     // Arrange
     var actualResult;
-    var expectedUrl = "http://www.omdbapi.com/?v=1&s=star%20wars";
+    var expectedUrl = "http://www.omdbapi.com/?apikey=4293974&s=star%20wars";
     $httpBackend.when("GET", "views/main.html").respond(200);
 
     $httpBackend.when("GET", expectedUrl).respond(200, responseData);

@@ -12,7 +12,6 @@ angular.module('unitTestExploreApp')
     var query = $location.search().q;
     omdbApi.search(query)
       .then(function(data){
-        data = data.data;
         $scope.results = data.Search;
       })
       .catch(function(){
