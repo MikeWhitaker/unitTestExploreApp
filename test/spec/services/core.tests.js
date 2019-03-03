@@ -63,7 +63,6 @@ describe('Service: core', function () {
 
   it("should authenticate the headers", function() {
     function expectedHeaders(headers) {
-      dump(angular.mock.dump(headers));
       var actualToken = angular.fromJson(headers).authToken;
       return actualToken === "teadybear";
     }

@@ -76,7 +76,6 @@ describe('Controller: ResultsCtrl ->', function () {
     });
 
     scope.$apply();
-    dump(angular.mock.dump(scope.errorMessage));
     expect(scope.errorMessage).toBe(expectedErrorMessage);
   });
 });
