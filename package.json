@@ -45,6 +45,8 @@
   "dependencies": {
     "angular-google-analytics": "^1.1.8",
     "eslint-plugin-import": "^2.14.0",
+    "moment": "^2.29.4",
+    "momentjs": "^2.0.0",
     "underscore": "^1.9.1"
   }
 }
